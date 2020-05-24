@@ -24,6 +24,7 @@ import { GettingStartedComponent } from './gettingstarted/gettingstarted.compone
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import {MatButtonModule} from "@angular/material/button";
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -40,7 +41,7 @@ export const appRoutes: Routes = [
     MatCardModule, MatToolbarModule, MatIconModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule,
     BrowserAnimationsModule, ShareButtonsModule,
     NgxAudioPlayerModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}),
+    RouterModule.forRoot(appRoutes, {useHash: false}), MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

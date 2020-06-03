@@ -25,15 +25,17 @@ import { GettingStartedComponent } from './gettingstarted/gettingstarted.compone
 import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import {MatButtonModule} from "@angular/material/button";
+import { RegisterComponent } from './form-login/register/register.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
   { path: 'guide/getting-started', component: GettingStartedComponent, data: { title: 'Getting Started' } },
+  { path: 'register', component: RegisterComponent, data: {title: 'Register'}}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, GettingStartedComponent
+    AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent
   ],
   imports: [
     HttpClientModule,

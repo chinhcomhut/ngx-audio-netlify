@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
+import {environment} from "../../environments/environment";
 // import {UpdateInfo} from '../model/userManager/UpdateInfo';
 // import {ChangePassword} from '../model/userManager/ChangePassword';
 
@@ -19,8 +20,8 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
-  private signupUrl = 'http://localhost:8080/api/auth/signup';
+  private loginUrl = environment.URL+'/api/auth/signin';
+  private signupUrl = environment.URL+'/api/auth/signup';
   // private updateProfileUrl = 'http://localhost:8080/api/auth/updateuser';
   // private changePassUrl = 'http://localhost:8080/api/auth/changePassword';
   constructor(private http: HttpClient) {

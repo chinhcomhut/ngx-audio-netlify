@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import {MatButtonModule} from "@angular/material/button";
 import { RegisterComponent } from './form-login/register/register.component';
+import {FormsModule} from "@angular/forms";
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
@@ -43,7 +44,7 @@ export const appRoutes: Routes = [
     MatCardModule, MatToolbarModule, MatIconModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule,
     BrowserAnimationsModule, ShareButtonsModule,
     NgxAudioPlayerModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}), MatButtonModule,
+    RouterModule.forRoot(appRoutes, {useHash: false}), MatButtonModule, FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

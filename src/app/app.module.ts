@@ -27,16 +27,20 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import {MatButtonModule} from "@angular/material/button";
 import { RegisterComponent } from './form-login/register/register.component';
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './form-login/login/login.component';
+import { UserComponent } from './form-login/user/user.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
   { path: 'guide/getting-started', component: GettingStartedComponent, data: { title: 'Getting Started' } },
-  { path: 'register', component: RegisterComponent, data: {title: 'Register'}}
+  { path: 'register', component: RegisterComponent, data: {title: 'Register'}},
+  { path: 'login', component: LoginComponent, data: {title:  'Login'}},
+  { path: 'user', component: UserComponent, data: {title: 'User'}}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent
+    AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent
   ],
   imports: [
     HttpClientModule,

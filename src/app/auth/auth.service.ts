@@ -20,8 +20,8 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 })
 export class AuthService {
 
-  private loginUrl = environment.URL+'/api/auth/signin';
-  private signupUrl = environment.URL+'/api/auth/signup';
+  private loginUrl = 'https://ndc-music.herokuapp.com/api/auth/signin';
+  private signupUrl = 'https://ndc-music.herokuapp.com/api/auth/signup';
   // private updateProfileUrl = 'http://localhost:8080/api/auth/updateuser';
   // private changePassUrl = 'http://localhost:8080/api/auth/changePassword';
   constructor(private http: HttpClient) {

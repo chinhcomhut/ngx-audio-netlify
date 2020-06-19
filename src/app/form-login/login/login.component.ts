@@ -48,8 +48,9 @@ export class LoginComponent implements OnInit {
           this.roles = this.tokenStorage.getAuthorities();
           // this.reloadPage();
           alert('Login success!!!');
+            window.location.reload();
           this.route.navigate(['/user']);
-          // window.location.reload();
+
         },
         error => {
           console.log(error);

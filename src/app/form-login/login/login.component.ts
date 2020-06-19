@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           // this.reloadPage();
           alert('Login success!!!');
           this.route.navigate(['/user']);
-          window.location.reload();
+          // window.location.reload();
         },
         error => {
           console.log(error);

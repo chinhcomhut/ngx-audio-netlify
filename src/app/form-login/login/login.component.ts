@@ -10,11 +10,13 @@ import { Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    hide = true;
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
+  errorMessage = 'Wrong useraccount or password! Please try again!';
   roles: string[] = [];
+  userName: String;
   private loginInfo: AuthLoginInfo;
 
   constructor(private authService: AuthService, private route: Router,
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
+      this.userName = this.tokenStorage.getUsername()
     }
   }
 

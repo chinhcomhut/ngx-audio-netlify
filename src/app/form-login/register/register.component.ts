@@ -2,13 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import { SignUpInfo} from "../../auth/signup-info";
 import { Router} from '@angular/router';
+import {FormControl, Validators} from "@angular/forms";
 
+// @ts-ignore
+// @ts-ignore
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+    emailFormControl = new FormControl('', [
+        Validators.required,
+        Validators.email,
+    ]);
+    // @ts-ignore
+    password = new FormControl('', [
+        Validators.required,
+        Validators.min
+    ]);
+    hide = true;
   form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
@@ -21,6 +34,7 @@ export class RegisterComponent implements OnInit {
   // onAvatar($event) {
   //     this.signupInfo.avatarUrl = $event;
   // }
+    Password: boolean;
 
   onSubmit() {
     console.log(this.form);

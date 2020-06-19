@@ -9,7 +9,7 @@ import {environment} from "../../environments/environment";
 })
 export class UserService {
 
-  private userUrl = environment.URL+'/api/test/user';
+  private userUrl = environment.URL+'/api/auth/user';
   private pmUrl = environment.URL+'/api/test/pm';
   private adminUrl = environment.URL+'/api/test/admin';
   // private updateUserUrl = 'http://localhost:8080/api/auth/updateuser';

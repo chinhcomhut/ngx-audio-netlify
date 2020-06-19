@@ -6,6 +6,7 @@ import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import {environment} from "../../environments/environment";
+import {ChangeProfile} from "./change-profile";
 // import {UpdateInfo} from '../model/userManager/UpdateInfo';
 // import {ChangePassword} from '../model/userManager/ChangePassword';
 
@@ -23,7 +24,7 @@ export class AuthService {
   private loginUrl = 'https://ndc-music.herokuapp.com/api/auth/signin';
   private signupUrl = 'https://ndc-music.herokuapp.com/api/auth/signup';
   // private updateProfileUrl = 'http://localhost:8080/api/auth/updateuser';
-  // private changePassUrl = 'http://localhost:8080/api/auth/changePassword';
+  private changePassUrl = 'https://ndc-music.herokuapp.com/api/auth/changePassword';
   constructor(private http: HttpClient) {
   }
 
@@ -46,7 +47,7 @@ export class AuthService {
   //   return this.http.put<JwtResponse>(this.updateProfileUrl, info, httpOptions);
   // }
   //
-  // changePasswordAuth(info: ChangePassword): Observable<JwtResponse> {
-  //   return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
-  // }
+  changePasswordAuth(info: ChangeProfile): Observable<JwtResponse> {
+    return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
+  }
 }

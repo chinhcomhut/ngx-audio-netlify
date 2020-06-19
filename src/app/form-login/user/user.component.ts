@@ -10,6 +10,7 @@ import { TokenStorageService} from "../../auth/token-storage.service";
 import {ActivatedRoute, ParamMap} from '@angular/router';
 // import {PlaylistService} from '../services/playlistManager/playlist.service';
 import {Subscription} from 'rxjs';
+import {ActivatedRouteSnapshot} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -36,8 +37,8 @@ export class UserComponent implements OnInit {
   errorMessage: string;
   info: any;
   // songList: Song[] = [];
-  constructor(private userService: UserService,
-              private token: TokenStorageService,
+  constructor(private token: TokenStorageService,
+              private routes: ActivatedRoute
              ) { }
 
   ngOnInit() {
@@ -64,20 +65,23 @@ export class UserComponent implements OnInit {
     //         }
     //     );
     // });
-    this.userService.getUserBoard().subscribe(
-        data => {
-          this.board = data;
-        },
-        error => {
-          this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-        }
-    );
+    // this.userService.getUserBoard().subscribe(
+    //     data => {
+    //       this.board = data;
+    //       // console.log(this.board),
+    //           console.log(this.info)
+    //     },
+    //     error => {
+    //       this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
+    //     }
+    // );
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       avatar: this.token.getAvatar(),
       roles: this.token.getAuthorities()
     };
+    console.log(this.info)
   }
   // changeMsbapDisplayTitle(event) {
   //     this.msbapDisplayTitle = event.checked;

@@ -70,7 +70,7 @@
                 </div>
                 <ng-template #signupForm>
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                        <mat-form-field style="width: 400px" appearance="outline">
+                        <mat-form-field style="width: 350px" appearance="outline">
                             <mat-label>Enter your name ...</mat-label>
                             <input matInput placeholder="Enter your name..."
                                    name="name" [(ngModel)]="form.name" #name="ngModel" required >
@@ -82,7 +82,7 @@
                             </div>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style="width: 400px" appearance="outline">
+                        <mat-form-field style="width: 350px" appearance="outline">
                             <mat-label>Enter your account ...</mat-label>
                             <input matInput placeholder="Enter your account..."
                                    name="username" [(ngModel)]="form.username" #username="ngModel" required >
@@ -95,9 +95,10 @@
                         </mat-form-field>
                         <br>
                         <form class="example-form">
-                            <mat-form-field style="width: 400px" class="example-full-width" appearance="outline">
+                            <mat-form-field style="width: 350px"  appearance="outline">
                                 <mat-label>Email</mat-label>
                                 <input  name="email" [(ngModel)]="form.email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                                <mat-icon color="accent" matSuffix>attach_email</mat-icon>
                                 <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                                     Please enter a valid email address!! Ex: chinhcomhut@gmail.com
                                 </mat-error>
@@ -107,7 +108,7 @@
                             </mat-form-field>
                         </form>
                         <br>
-                        <mat-form-field style=" width: 400px" appearance="outline">
+                        <mat-form-field style=" width: 350px" appearance="outline">
                             <mat-label>Enter your password</mat-label>
                             <input name="password" matInput [type]="hide ? 'password' : 'text'"
                                    [(ngModel)]="form.password" #password="ngModel"

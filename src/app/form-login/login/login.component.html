@@ -69,7 +69,7 @@
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()"
                           #f="ngForm" novalidate>
 
-                        <mat-form-field style="width: 400px" appearance="outline">
+                        <mat-form-field style="width: 350px" appearance="outline">
                             <mat-label>Please login ...</mat-label>
                             <input name="username" matInput placeholder="User account login..."
                                    [(ngModel)]="form.username" #username="ngModel" required>
@@ -81,7 +81,7 @@
                             </div>
                         </mat-form-field>
                         <br>
-                        <mat-form-field style=" width: 400px" appearance="outline">
+                        <mat-form-field style=" width: 350px" appearance="outline">
                             <mat-label>Enter your password</mat-label>
                             <input name="password" matInput [type]="hide ? 'password' : 'text'"
                                    [(ngModel)]="form.password" #password="ngModel"

@@ -27,7 +27,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "node server.js",
     "lch-build": "ng build",
     "prod-build": "ng build --prod",
     "build-lib": "ng build ngx-audio-player --prod",
@@ -37,7 +37,8 @@
     "test": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
     "test-lib": "ng test ngx-audio-player --code-coverage --reporters=teamcity,coverage-istanbul",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -95,5 +96,9 @@
     "tslint": "^5.0.0",
     "typescript": "~3.6.4",
     "webpack": "^4.6.0"
+  },
+  "engines": {
+    "node": "~12.16.3",
+    "npm": "~6.14.4"
   }
 }

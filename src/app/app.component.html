@@ -1,6 +1,6 @@
 <div class="topnav" id="myTopnav">
     <a style="color: yellow; text-decoration: none;" aria-label="Angular Audio Player" class="docs-button mat-button"
-       mat-button tabindex="0" aria-disabled="false" [routerLink]="['/']"><span class="mat-button-wrapper"><img
+       mat-button tabindex="0" aria-disabled="false" routerLink="/"><span class="mat-button-wrapper"><img
             width="30px;" alt="angular" class="docs-angular-logo"
             src="../assets/images/icons/mp3.png" height="30" width="30"/><b>Home</b></span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -8,7 +8,7 @@
     </a><span class="example-spacer"></span>
     <a *ngIf="!authority" style="color: springgreen; text-decoration: none;" aria-label="Angular Audio Player"
        class="docs-button mat-button"
-       mat-button tabindex="0" aria-disabled="false" [routerLink]="['register']"><span class="mat-button-wrapper"><img
+       mat-button tabindex="0" aria-disabled="false" routerLink="/register"><span class="mat-button-wrapper"><img
             width="30px;" alt="angular" class="docs-angular-logo"
             src="../assets/images/icons/add_user.png" height="30" [width]="30"/><b>Register</b></span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -17,7 +17,7 @@
     <!-- USER ACCOUNT -->
     <a *ngIf="authority === 'user'" style="color: springgreen; text-decoration: none;" aria-label="Angular Audio Player"
        class="docs-button mat-button"
-       mat-button tabindex="0" aria-disabled="false" [routerLink]="['user']"><span class="mat-button-wrapper"><img
+       mat-button tabindex="0" aria-disabled="false" routerLink="/user"><span class="mat-button-wrapper"><img
             width="30px;" alt="angular" class="docs-angular-logo"
             src="https://img.icons8.com/dusk/64/000000/user-folder.png"><b>User Account</b></span>
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
@@ -26,7 +26,7 @@
     <!-- LOGIN -->
     <a *ngIf="!authority" style="color: springgreen; text-decoration: none;" aria-label="Angular Audio Player"
        class="docs-button mat-button"
-       mat-button tabindex="0" aria-disabled="false" [routerLink]="['login']"><span class="mat-button-wrapper"><img
+       mat-button tabindex="0" aria-disabled="false" routerLink="/login"><span class="mat-button-wrapper"><img
             width="30px;" alt="angular" class="docs-angular-logo"
             src="../assets/images/icons/login.png"
                                                                          width="30px"/><b>Login</b></span>

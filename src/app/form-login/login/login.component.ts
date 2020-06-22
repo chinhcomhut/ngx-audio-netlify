@@ -31,8 +31,9 @@ export class LoginComponent implements OnInit {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getAuthorities();
             this.userName = this.tokenStorage.getUsername()
+            this.route.navigate(['/user'])
         }
-        this.returnUrl = this.routes.snapshot.queryParams.returnUrl || '/user';
+
     }
 
     onSubmit() {
@@ -50,15 +51,15 @@ export class LoginComponent implements OnInit {
 
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
-                this.roles = this.tokenStorage.getAuthorities();
-                this.route.navigateByUrl(this.returnUrl);
-                alert('Login success!!!');
 
-                // @ts-ignore
-                // this.route.url = '/user';
-                // this.reloadPage();
-                // this.route.navigate(['/user']);
+                this.route.navigate(['/user'])
+
+                window.location.reload();
+
+
                 console.log("chinh" + this.route + "url" + this.route.url)
+
+
                 // this.route.navigate(['/user']);
                 // console.log("chinh1"+this.route + "url"+this.route.url)
                 // this.reloadPage();
@@ -66,7 +67,7 @@ export class LoginComponent implements OnInit {
                 // this.route.navigate(['/user']);
                 // this.reloadPage();
                 // } else {
-                    window.location.reload();
+
                 // }
             },
             error => {
@@ -74,12 +75,10 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = error.error.message;
                 this.isLoginFailed = true;
                 alert('Login Failed!!! Please login again! ');
-                this.reloadPage();
+
             }
         );
     }
 
-    reloadPage() {
-        window.location.reload();
-    }
+
 }

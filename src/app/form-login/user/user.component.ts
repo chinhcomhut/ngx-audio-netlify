@@ -38,9 +38,11 @@ export class UserComponent implements OnInit {
   info: any;
   // songList: Song[] = [];
   constructor(private token: TokenStorageService,
-              private routes: ActivatedRoute
+              private routes: ActivatedRoute,
+              private userService: UserService
              ) { }
 
+  // @ts-ignore
   ngOnInit() {
     // this.sub = this.routes.paramMap.subscribe((paramMap: ParamMap) => {
     //     const id = +paramMap.get('id');
@@ -65,16 +67,16 @@ export class UserComponent implements OnInit {
     //         }
     //     );
     // });
-    // this.userService.getUserBoard().subscribe(
-    //     data => {
-    //       this.board = data;
-    //       // console.log(this.board),
-    //           console.log(this.info)
-    //     },
-    //     error => {
-    //       this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-    //     }
-    // );
+    this.userService.getUserBoard().subscribe(
+        data => {
+          this.board = data;
+          // console.log(this.board),
+              console.log(this.info)
+        },
+        error => {
+          this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
+        }
+    );
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),

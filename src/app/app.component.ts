@@ -10,8 +10,8 @@ import { TokenStorageService} from './auth/token-storage.service';
 })
 export class AppComponent implements OnInit {
   title = 'ngx-audio-player-demo';
-  private roles: string[];
-  private authority: string;
+   roles: string[];
+authority: string;
   // songList: Song[] = [];
   info: any;
   constructor(private tokenStorage: TokenStorageService

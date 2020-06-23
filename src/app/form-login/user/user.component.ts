@@ -7,7 +7,7 @@ import { TokenStorageService} from "../../auth/token-storage.service";
 // import {SongService} from '../services/song/song.service';
 // import {Track} from 'ngx-audio-player';
 // import {PlaylistInfor} from '../model/playlist/playlist-Infor';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 // import {PlaylistService} from '../services/playlistManager/playlist.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRouteSnapshot} from "@angular/router";
@@ -39,7 +39,8 @@ export class UserComponent implements OnInit {
   // songList: Song[] = [];
   constructor(private token: TokenStorageService,
               private routes: ActivatedRoute,
-              private userService: UserService
+              private userService: UserService,
+              private route: Router
              ) { }
 
   // @ts-ignore
@@ -106,7 +107,8 @@ export class UserComponent implements OnInit {
   // }
   logout() {
     this.token.signOut();
-    window.location.reload();
+    // window.location.reload();
+    this.route.navigate(['/'])
   }
   // update(songs: Song[]) {
   //     this.songList = songs;

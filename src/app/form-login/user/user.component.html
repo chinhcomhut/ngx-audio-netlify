@@ -32,7 +32,7 @@
 <!--                                            &lt;!&ndash;                    <strong>Roles:</strong> {{info.roles}}<br/>&ndash;&gt;-->
 <!--                                            &lt;!&ndash;                    <strong>Token:</strong> {{info.token}}.&ndash;&gt;-->
 <!--                                        </p>-->
-                                        <button class="btn btn-danger" (click)="logout()">Logout</button>
+                                        <button routerLink="/" class="btn btn-danger" (click)="logout()">Logout</button>
                                         <button class="btn btn-primary"routerLink="/changeProfile">Change Pass</button>
                                     </div>
                                     <ng-template #loggedOut>

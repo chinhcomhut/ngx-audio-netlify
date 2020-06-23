@@ -63,15 +63,15 @@
             <mat-card style="margin: 50px 0;">
                 <div *ngIf="isLoggedIn; else loggedOut">
                     <h1 style="color: #2c8ebb"> Welcome: <strong style="color: #f92672"> {{userName}}</strong></h1>
-                    <a style="color: darkred; text-decoration: none;" aria-label="Angular Audio Player"
+                    <button style="color: darkred; text-decoration: none;" aria-label="Angular Audio Player"
                        class="docs-button mat-button"
-                       mat-button tabindex="0" aria-disabled="false" href="/user">
+                       mat-button tabindex="0" aria-disabled="false" routerLink="/user">
                         <mat-icon color="accent" matSuffix>account_circle</mat-icon>
 
                          <b>User Account</b>
                         <div class="mat-button-ripple mat-ripple" matripple=""></div>
                         <div class="mat-button-focus-overlay"></div>
-                    </a><span class="example-spacer"></span>
+                    </button><span class="example-spacer"></span>
                 </div>
                 <ng-template #loggedOut>
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()"

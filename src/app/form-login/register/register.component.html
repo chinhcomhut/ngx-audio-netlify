@@ -69,7 +69,7 @@
                     Your registration is successfull! Please login!
                 </div>
                 <ng-template #signupForm>
-                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <form class="form-register" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                         <mat-form-field style="width: 350px" appearance="outline">
                             <mat-label>Enter your name ...</mat-label>
                             <input matInput placeholder="Enter your name..."

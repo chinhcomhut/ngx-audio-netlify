@@ -71,7 +71,7 @@ export class UserComponent implements OnInit {
         data => {
           this.board = data;
           // console.log(this.board),
-              console.log(this.info)
+          //     console.log(this.info)
         },
         error => {
           this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
@@ -83,7 +83,7 @@ export class UserComponent implements OnInit {
       avatar: this.token.getAvatar(),
       roles: this.token.getAuthorities()
     };
-    console.log(this.info)
+    // console.log(this.info)
   }
   // changeMsbapDisplayTitle(event) {
   //     this.msbapDisplayTitle = event.checked;

@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
                 this.isLoggedIn = true;
 
                 alert('Login success!!')
+                this.route.navigate(['/user'])
 
-                window.location.reload()
 
                 // this.route.navigate(['/user']);
                 // console.log("chinh1"+this.route + "url"+this.route.url)

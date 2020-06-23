@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
           console.log(error);
           this.errorMessage = error.error.message;
           this.isSignUpFailed = true;
-          alert('Create Account Failed! Please Create Account Again!');
+          alert('Create Account Failed! The same name or Email! Please Create Account Again!');
         }
     );
   }

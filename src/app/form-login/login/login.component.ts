@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     form: any = {};
     isLoggedIn = false;
     isLoginFailed = false;
-    errorMessage = 'Wrong useraccount or password! Please try again!';
+    errorMessage = '';
     roles: string[] = [];
     userName: String;
     private loginInfo: AuthLoginInfo;

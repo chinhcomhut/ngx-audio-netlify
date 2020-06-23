@@ -75,7 +75,7 @@ export const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
     {path: 'user', component: UserComponent, data: {title: 'User'}},
-    {path: 'changeProfile', component: ChangeProfileComponent, data: {title: 'ChangeProfile'}}
+    {path: 'changepassword', component: ChangeProfileComponent, data: {title: 'Changepassword'}}
 ];
 
 @NgModule({

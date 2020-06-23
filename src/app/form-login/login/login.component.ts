@@ -23,15 +23,16 @@ export class LoginComponent implements OnInit {
 
     constructor(private authService: AuthService, private route: Router,
                 private tokenStorage: TokenStorageService,
-                private routes: ActivatedRoute) {
+                private routes: ActivatedRoute,
+                ) {
     }
 
     ngOnInit() {
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
+            console.log("isLoggedIn"+this.isLoggedIn)
             this.roles = this.tokenStorage.getAuthorities();
             this.userName = this.tokenStorage.getUsername()
-            this.route.navigate(['/user'])
         }
 
     }
@@ -52,13 +53,9 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
 
-                this.route.navigate(['/user'])
+                alert('Login success!!')
 
-                window.location.reload();
-
-
-                console.log("chinh" + this.route + "url" + this.route.url)
-
+                window.location.reload()
 
                 // this.route.navigate(['/user']);
                 // console.log("chinh1"+this.route + "url"+this.route.url)

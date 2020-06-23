@@ -182,5 +182,8 @@
   "defaultProject": "ngx-audio-player-demo",
   "cli": {
     "analytics": "a0e42aed-9d64-4aaf-ae40-fa8364b8db97"
-  }
+  },
+  "glob": "_redirects",
+  "input": "src",
+  "output": "/"
 }

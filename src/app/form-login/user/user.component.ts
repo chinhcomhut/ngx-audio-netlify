@@ -107,8 +107,8 @@ export class UserComponent implements OnInit {
   // }
   logout() {
     this.token.signOut();
-    // window.location.reload();
-    this.route.navigate(['/'])
+    // this.route.navigate(['/'])
+    window.location.reload();
   }
   // update(songs: Song[]) {
   //     this.songList = songs;

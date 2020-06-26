@@ -1,0 +1,48 @@
+<div class="container" *ngIf="singers">
+    <a [routerLink]="['/add-song-singer/',singers.id]" class="btn btn-outline-warning offset-5">Thêm Bài Hát Vào Ca Si</a>
+    <hr>
+    <div class="row">
+        <div class="col-3">
+            <div class="text-center">
+                <img [src]=singers.avatarSinger alt="" class="avatar">
+            </div>
+            <div class="offset-4 mt-5">
+                <a href="#" class="btn btn-outline-info">Follow</a>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Tên Ca Sĩ
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            {{singers.nameSinger}}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Information
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            {{singers.information}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

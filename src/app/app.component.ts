@@ -25,7 +25,7 @@ authority: string;
       this.roles.every(role => {
         if (role === 'ADMIN') {
           this.authority = 'admin';
-          return false;
+          return true;
         } else if (role === 'PM') {
           this.authority = 'pm';
           return false;

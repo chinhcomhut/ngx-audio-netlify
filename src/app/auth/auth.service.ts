@@ -7,6 +7,7 @@ import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import {environment} from "../../environments/environment";
 import {ChangePassword} from "./change-password";
+import {UserAccount} from "../model/userAccount/userAccount";
 // import {UpdateInfo} from '../model/userManager/UpdateInfo';
 // import {ChangePassword} from '../model/userManager/ChangePassword';
 
@@ -20,10 +21,10 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
   providedIn: 'root'
 })
 export class AuthService {
-
+  private getUserId = 'https://ndc-music.herokuapp.com/api/auth/user'
   private loginUrl = 'https://ndc-music.herokuapp.com/api/auth/signin';
   private signupUrl = 'https://ndc-music.herokuapp.com/api/auth/signup';
-  // private updateProfileUrl = 'http://localhost:8080/api/auth/updateuser';
+  private updateProfileUrl = 'https://ndc-music.herokuapp.com/api/auth/update-profile';
   private changePassUrl = 'https://ndc-music.herokuapp.com/api/auth/changePassword';
   constructor(private http: HttpClient) {
   }
@@ -35,6 +36,9 @@ export class AuthService {
     console.log(this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions))
     return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
+  getUserById(id: number): Observable<UserAccount>{
+    return this.http.get<UserAccount>(this.getUserId+id)
+  }
   loggined() {
     const token = sessionStorage.getItem(TOKEN_KEY);
     const username = sessionStorage.getItem(USERNAME_KEY);
@@ -45,6 +49,7 @@ export class AuthService {
     return false;
   }
   signUp(info: SignUpInfo): Observable<string> {
+    console.log(info)
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
   // updateAuth(info: UpdateInfo): Observable<JwtResponse> {
@@ -56,8 +61,8 @@ export class AuthService {
     console.log(this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions));
     return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
   }
-  updatePassword(users: ChangePassword): Observable<ChangePassword> {
-    return this.http.put<ChangePassword>(this.changePassUrl, users);
+  updateAvatar(users: UserAccount): Observable<UserAccount> {
+    return this.http.put<UserAccount>(`${this.updateProfileUrl}/${users.id}`, users);
   }
     changePassword(data){
     var headers = new HttpHeaders()

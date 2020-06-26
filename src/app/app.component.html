@@ -23,6 +23,15 @@
         <div class="mat-button-ripple mat-ripple" matripple=""></div>
         <div class="mat-button-focus-overlay"></div>
     </a><span class="example-spacer"></span>
+<!-- ADMIN -->
+    <a *ngIf="authority === 'admin'" style="color: springgreen; text-decoration: none;" aria-label="Angular Audio Player"
+       class="docs-button mat-button"
+       mat-button tabindex="0" aria-disabled="false" routerLink="/admin"><span class="mat-button-wrapper"><img
+            width="30px;" alt="angular" class="docs-angular-logo"
+            src="https://img.icons8.com/dusk/64/000000/user-folder.png"><b>Admin</b></span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a><span class="example-spacer"></span>
     <!-- LOGIN -->
     <a *ngIf="!authority" style="color: springgreen; text-decoration: none;" aria-label="Angular Audio Player"
        class="docs-button mat-button"

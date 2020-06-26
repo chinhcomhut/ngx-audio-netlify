@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SingerInfo} from "../../../model/singer/singer-info";
 import {ActivatedRoute} from "@angular/router";
-import {SingerService} from "../../../service/singerService/singer.service";
+import {SingerService} from "../../../service/singer.service";
+
 
 @Component({
     selector: 'app-detail-singer',

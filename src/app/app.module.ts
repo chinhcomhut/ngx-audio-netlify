@@ -68,6 +68,11 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatTreeModule} from "@angular/material/tree";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {PortalModule} from "@angular/cdk/portal";
+import { AddAvatarComponent } from './form-login/add-avatar/add-avatar.component';
+import { UploadFileComponent } from './content/upload/upload-file/upload-file.component';
+import { CreateSingerComponent } from './content/singerManage/create-singer/create-singer.component';
+import { AdminComponent } from './form-login/admin/admin.component';
+import { DetailSingerComponent } from './content/singerManage/detail-singer/detail-singer.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {title: 'Home'}},
@@ -75,12 +80,15 @@ export const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
     {path: 'user', component: UserComponent, data: {title: 'User'}},
-    {path: 'changepassword', component: ChangeProfileComponent, data: {title: 'Changepassword'}}
+    {path: 'changepassword', component: ChangeProfileComponent, data: {title: 'Changepassword'}},
+    {path: 'uploadAvatar', component: UploadAvatarComponent, data: {title: 'UploadAvatar'}},
+    {path: 'addAvatar',component: AddAvatarComponent, data: {title: 'AddAvatar'}},
+    {path: 'admin',component: AdminComponent, data: {title: 'Admin'}}
 ];
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangeProfileComponent,
+        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangeProfileComponent, AddAvatarComponent, UploadFileComponent, CreateSingerComponent, AdminComponent, DetailSingerComponent,
     ],
     imports: [
         HttpClientModule,

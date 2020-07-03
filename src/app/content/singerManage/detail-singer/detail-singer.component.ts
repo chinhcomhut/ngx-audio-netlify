@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SingerInfo} from "../../../model/singer/singer-info";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SingerService} from "../../../service/singer.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -10,28 +11,28 @@ import {SingerService} from "../../../service/singer.service";
     styleUrls: ['./detail-singer.component.css']
 })
 export class DetailSingerComponent implements OnInit {
+id: number;
+singer: SingerInfo;
 
-    title = 'Chi Tiết Ca Sĩ';
-    singers: SingerInfo;
-
+isLoadingResults = true;
     constructor(private singerService: SingerService,
-                private routes: ActivatedRoute) {
+                private router: Router,
+                private route: ActivatedRoute
+    ) {
     }
 
     ngOnInit() {
-        this.routes.paramMap.subscribe(paramMap => {
-            const id = +paramMap.get('id');
-            this.singerService.getSingerById(id).subscribe(
-                next => {
-                    this.singers = next;
-                    console.log(next);
-                    console.log(this.singers);
-                },
-                error => {
-                    this.singers = null;
-                    console.log(error);
-                }
-            );
-        });
+        this.singer = new SingerInfo();
+      this.id = this.route.snapshot.params['id']
+        console.log("id"+this.singer.id)
+        this.singerService.getEmployee(this.id).subscribe(data => {
+            console.log(data)
+            this.singer = data;
+        }, error => {
+            console.log(error)
+        })
     }
+  list(){
+        this.router.navigate(['singer'])
+  }
 }

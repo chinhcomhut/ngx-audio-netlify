@@ -11,6 +11,7 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons/faTwitter';
 import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -22,7 +23,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HomeComponent} from './home/home.component';
 import {GettingStartedComponent} from './gettingstarted/gettingstarted.component';
 import {AngularFireModule} from '@angular/fire';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import {MatButtonModule} from "@angular/material/button";
 import {RegisterComponent} from './form-login/register/register.component';
@@ -73,6 +74,11 @@ import { UploadFileComponent } from './content/upload/upload-file/upload-file.co
 import { CreateSingerComponent } from './content/singerManage/create-singer/create-singer.component';
 import { AdminComponent } from './form-login/admin/admin.component';
 import { DetailSingerComponent } from './content/singerManage/detail-singer/detail-singer.component';
+import { SingerComponent } from './content/singerManage/singer/singer.component';
+import { EditSingerComponent } from './content/singerManage/edit-singer/edit-singer.component';
+import { httpInterceptorProviders} from "./auth/auth-interceptor";
+import {AuthGuard} from "./auth/auth.guard";
+import {AuthService} from "./auth/auth.service";
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {title: 'Home'}},
@@ -80,15 +86,19 @@ export const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
     {path: 'user', component: UserComponent, data: {title: 'User'}},
-    {path: 'changepassword', component: ChangeProfileComponent, data: {title: 'Changepassword'}},
+    {path: 'changepass', component: ChangeProfileComponent, data: {title: 'ChangePassword'}},
     {path: 'uploadAvatar', component: UploadAvatarComponent, data: {title: 'UploadAvatar'}},
     {path: 'addAvatar',component: AddAvatarComponent, data: {title: 'AddAvatar'}},
-    {path: 'admin',component: AdminComponent, data: {title: 'Admin'}}
+    {path: 'admin',component: AdminComponent, data: {title: 'Admin'}},
+    {path: 'detailSinger/:id', component: DetailSingerComponent, data:{title: 'DetailSinger'}},
+    {path: 'createSinger', component: CreateSingerComponent, data: {title: 'CreateSinger' }},
+    {path: 'editSinger/:id', component: EditSingerComponent, data: {title: 'EditSinger'}},
+    {path: 'singer', component: SingerComponent, data: {title: 'Singer'}}
 ];
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangeProfileComponent, AddAvatarComponent, UploadFileComponent, CreateSingerComponent, AdminComponent, DetailSingerComponent,
+        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangeProfileComponent, AddAvatarComponent, UploadFileComponent, CreateSingerComponent, AdminComponent, DetailSingerComponent, SingerComponent, EditSingerComponent,
     ],
     imports: [
         HttpClientModule,
@@ -99,8 +109,12 @@ export const appRoutes: Routes = [
         AngularFireStorageModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         RouterModule.forRoot(appRoutes, {useHash: false}), MatButtonModule, FormsModule, MatFormFieldModule, ReactiveFormsModule,
+
     ],
-    providers: [],
+    // entryComponents: [UserComponent],
+    providers: [
+        httpInterceptorProviders //Doan code lay JWT cho Header gui request lien quan ChangePass//
+    ],
     bootstrap: [AppComponent],
     exports: [
         A11yModule,
@@ -146,6 +160,7 @@ export const appRoutes: Routes = [
         MatTreeModule,
         PortalModule,
         ScrollingModule,
+
     ]
 })
 export class AppModule {

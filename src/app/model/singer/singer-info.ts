@@ -1,6 +1,5 @@
 export class SingerInfo {
-    id?: number;
-    nameSinger?: string;
-    avatarSinger?: string;
-    information?: string;
+    id: number;
+    name: string;
+    avatar: string;
 }

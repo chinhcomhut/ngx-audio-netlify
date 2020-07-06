@@ -23,7 +23,7 @@ export class AddAvatarComponent implements OnInit {
             name: new FormControl('')
         })
         this.user = {
-            avatar: '',
+            // avatar: '',
             name: ''
         }
     }
@@ -45,20 +45,20 @@ export class AddAvatarComponent implements OnInit {
     }
 
 
-    onAvatar($event) {
-        this.user.avatar = $event;
-    }
+    // onAvatar($event) {
+    //     this.user.avatar = $event;
+    // }
 
-    createAvatar() {
-
-        this.authService.updateAvatar(this.user).subscribe(() => {
-                alert('Add avatar success!!');
-                this.route.navigate(['/user']);
-            }, error => {
-                console.log(error),
-                    alert('Bạn chưa thêm thành công');
-            }
-        );
-    }
+    // createAvatar() {
+    //
+    //     this.authService.updateAvatar(this.user).subscribe(() => {
+    //             alert('Add avatar success!!');
+    //             this.route.navigate(['/user']);
+    //         }, error => {
+    //             console.log(error),
+    //                 alert('Bạn chưa thêm thành công');
+    //         }
+    //     );
+    // }
 
 }

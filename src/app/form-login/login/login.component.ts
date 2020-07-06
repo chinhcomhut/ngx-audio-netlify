@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
 
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
-
+                this.roles = this.tokenStorage.getAuthorities()
                 alert('Login success!!')
                 this.route.navigate(['/user'])
                 window.location.reload()

@@ -11,6 +11,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 // import {PlaylistService} from '../services/playlistManager/playlist.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRouteSnapshot} from "@angular/router";
+import {UserAccount} from "../../model/userAccount/userAccount";
 
 @Component({
   selector: 'app-user',
@@ -18,24 +19,13 @@ import {ActivatedRouteSnapshot} from "@angular/router";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  // songList: Song[] = [];
-  // title: string;
-  // sub: Subscription;
-  // song: Song[];
-  // msaapDisplayTitle = true;
-  // msaapDisplayPlayList = true;
-  // pageSizeOptions = [2, 4, 6];
-  // msaapDisplayVolumeControls = true;
-  // msbapDisplayTitle = false;
-  // msbapDisplayVolumeControls = true;
-  // playlist1: Track;
-  // playlist2: Track[] = [];
-  // msaapPlaylist2: Track[] = [];
-  // // title = 'Chúc Các Bạn Nghe Nhạc Vui Vẻ';
-  // playlist: PlaylistInfor;
+
   board: string;
   errorMessage: string;
+  // users: Array<UserAccount>
+  user: UserAccount
   info: any;
+  returnUrl: string
   // songList: Song[] = [];
   constructor(private token: TokenStorageService,
               private routes: ActivatedRoute,
@@ -45,46 +35,24 @@ export class UserComponent implements OnInit {
 
   // @ts-ignore
   ngOnInit() {
-    // this.sub = this.routes.paramMap.subscribe((paramMap: ParamMap) => {
-    //     const id = +paramMap.get('id');
-    //     this.playlistService.getPlayListById(id).subscribe(
-    //         next => {
-    //             this.playlist = next;
-    //             console.log(next);
-    //             // this.title = next.title;
-    //             this.song = next.songs;
-    //             for (const song of this.song ) {
-    //                 this.playlist1 = {
-    //                     title: song.nameSong,
-    //                     link: song.mp3Url
-    //                 };
-    //                 this.playlist2.push(this.playlist1);
-    //             }
-    //             this.msaapPlaylist2 = this.playlist2;
-    //         },
-    //         error => {
-    //             this.playlist = null;
-    //             console.log(error);
-    //         }
-    //     );
-    // });
+
     this.userService.getUserBoard().subscribe(
         data => {
           this.board = data;
-          // console.log(this.board),
-          //     console.log(this.info)
         },
         error => {
           this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
         }
     );
     this.info = {
+
       token: this.token.getToken(),
       username: this.token.getUsername(),
       avatar: this.token.getAvatar(),
       roles: this.token.getAuthorities()
     };
     // console.log(this.info)
+console.log("token"+this.token.getToken())
   }
   // changeMsbapDisplayTitle(event) {
   //     this.msbapDisplayTitle = event.checked;
@@ -113,6 +81,21 @@ export class UserComponent implements OnInit {
   // update(songs: Song[]) {
   //     this.songList = songs;
   // }
-
+  getUser() {
+    if (this.token) {
+      this.userService.getUserById(this.token.getUserId()).subscribe(
+          result => {
+            this.user = result;
+          }, error1 => {
+            console.log(error1);
+          }
+      );
+    }
+  }
+  editUser(user: UserAccount): void {
+    window.sessionStorage.removeItem("AuthUserId");
+    window.sessionStorage.setItem("AuthUserId", user.id.toString());
+    this.route.navigate(['/change-profile'+user.id]);
+  };
 
 }

@@ -26,6 +26,15 @@
 <!--                                <div class="example-box" style="margin: auto" cdkDrag>-->
 
                                     <div *ngIf="info.token; else loggedOut">
+                                        <mat-card-content>
+                                            <mat-list>
+                                                <mat-list-item>
+                                                    <h3 mat-line>
+                                                        <a mat-button [routerLink]="['/change-profile/',user.id]">Change Profile</a>
+                                                    </h3>
+                                                </mat-list-item>
+                                            </mat-list>
+                                        </mat-card-content>
 
 <!--                                        <p>-->
 <!--                                            <strong>Username:</strong> {{info.username}}<br/>-->
@@ -33,7 +42,7 @@
 <!--                                            &lt;!&ndash;                    <strong>Token:</strong> {{info.token}}.&ndash;&gt;-->
 <!--                                        </p>-->
                                         <button routerLink="/" class="btn btn-danger" (click)="logout()">Logout</button>
-                                        <button class="btn btn-primary"routerLink="/changepassword">Change Pass</button>
+                                        <button class="btn btn-primary"routerLink="/changepass">Change Pass</button>
                                         <button class="btn btn-danger"routerLink="/addAvatar">Change Avatar</button>
                                     </div>
                                     <ng-template #loggedOut>
@@ -47,6 +56,19 @@
                     </div>
                 </div>
             </div>
+<!--            <mat-card>-->
+<!--                <mat-card-content>-->
+<!--                    <mat-list>-->
+<!--                        <mat-list-item *ngFor="let user of users">-->
+<!--                            <h3 mat-line>-->
+<!--                                <a mat-button [routerLink]="['/change-profile', user.id]">{{user.name}}</a>-->
+<!--                            </h3>-->
+<!--                        </mat-list-item>-->
+<!--                    </mat-list>-->
+<!--                </mat-card-content>-->
+
+<!--&lt;!&ndash;                <button mat-fab color="primary" [routerLink]="['/car-add']">Add</button>&ndash;&gt;-->
+<!--            </mat-card>-->
 
 
 

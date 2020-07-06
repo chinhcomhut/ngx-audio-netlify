@@ -12,7 +12,7 @@ import {UserAccount} from "../model/userAccount/userAccount";
 // import {ChangePassword} from '../model/userManager/ChangePassword';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }).set('AuthAuthorities','AuthToken'+localStorage.getItem('AuthUsername'))
+  headers: new HttpHeaders({  'Content-Type': 'application/json' })
 };
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
@@ -21,11 +21,20 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
   providedIn: 'root'
 })
 export class AuthService {
-  private getUserId = 'https://ndc-music.herokuapp.com/api/auth/user'
-  private loginUrl = 'https://ndc-music.herokuapp.com/api/auth/signin';
-  private signupUrl = 'https://ndc-music.herokuapp.com/api/auth/signup';
-  private updateProfileUrl = 'https://ndc-music.herokuapp.com/api/auth/update-profile';
-  private changePassUrl = 'https://ndc-music.herokuapp.com/api/auth/changePassword';
+  // private getUserId = environment.URL_local+'user';
+  private getUserId = environment.URL_server+'user';
+
+  // private loginUrl = environment.URL_local+'signin';
+  private loginUrl = environment.URL_server+'signin';
+
+  // private signupUrl = environment.URL_local+'signup';
+  private signupUrl = environment.URL_server+'signup';
+
+  private updateProfileUrl = environment.URL_local+'update-profile';
+
+  // private changePassUrl = environment.URL_local+'change-password';
+  private changePassUrl = environment.URL_server+'change-password';
+
   constructor(private http: HttpClient) {
   }
 
@@ -56,22 +65,18 @@ export class AuthService {
   //   return this.http.put<JwtResponse>(this.updateProfileUrl, info, httpOptions);
   // }
   //
+
   changePasswordAuth(info: ChangePassword): Observable<JwtResponse> {
-    console.log(JwtResponse);
-    console.log(this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions));
+    console.log("info"+info)
+    console.log("Jwt"+JwtResponse)
     return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
   }
-  updateAvatar(users: UserAccount): Observable<UserAccount> {
-    return this.http.put<UserAccount>(`${this.updateProfileUrl}/${users.id}`, users);
-  }
-    changePassword(data){
-    var headers = new HttpHeaders()
-        .set('AuthAuthorities', 'AuthToken ' + localStorage.getItem('AuthUsername'));
+    changePassword(passForm: ChangePassword): Observable<string> {
+    console.log("passForm"+passForm)
 
-    var options =  {
-      headers: headers
-    };
-    return this.http
-        .put(this.changePassUrl,data, options)
-  }
+      return this.http.put<string>(this.changePassUrl ,passForm);
+    }
+  // updatePassword(passForm: PassForm): Observable<string> {
+  //   return this.http.put<string>(this.svUpdatePasswordUrl + '/' + passForm.id , passForm);
+  // }
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { TokenStorageService} from './auth/token-storage.service';
+import {UserAccount} from "./model/userAccount/userAccount";
 // import {Song} from './model/song/song';
 // import {SongService} from './services/song/song.service';
 
@@ -13,13 +14,14 @@ export class AppComponent implements OnInit {
    roles: string[];
 authority: string;
   // songList: Song[] = [];
+  user: UserAccount;
   info: any;
   constructor(private tokenStorage: TokenStorageService
               // private songService: SongService
   ) {
   }
   ngOnInit(): void {
-    if (this.tokenStorage.getUsername()) {
+    if (this.tokenStorage.getToken()) {
       this.roles = this.tokenStorage.getAuthorities();
       console.log('authority '+this.roles)
       this.roles.every(role => {
@@ -35,6 +37,7 @@ authority: string;
           return true;
         }
       });
+
     }
     this.info = {
       token: this.tokenStorage.getToken(),

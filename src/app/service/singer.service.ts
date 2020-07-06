@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable, of} from "rxjs";
 import {SingerInfo} from "../model/singer/singer-info";
+import {catchError, tap} from "rxjs/operators";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SingerService {
 
-  private singerUrl = environment.URL+'/api/auth/singer'
+  private API_SINGER = 'http://localhost:8080/api/auth/singer';
+
   constructor(private http: HttpClient) { }
-  getSingerList(): Observable<SingerInfo[]>{
-    return this.http.get<SingerInfo[]>(this.singerUrl)
-  }
-  createSinger(singer: SingerInfo): Observable<SingerInfo> {
-    return this.http.post<SingerInfo>(this.singerUrl , singer);
-  }
-  getSingerById(id: number): Observable<SingerInfo>{
-    return this.http.get<SingerInfo>(this.singerUrl+id)
+  getEmployee(id: number): Observable<SingerInfo> {
+    return this.http.get<SingerInfo>(`${this.API_SINGER}/${id}`);
   }
 
-  updateSinger(singer: SingerInfo): Observable<SingerInfo> {
-    return this.http.put<SingerInfo>(this.singerUrl + singer.id , singer);
+  createEmployee(employee: Object): Observable<Object> {
+    return this.http.post(`${this.API_SINGER}`, employee);
   }
 
-  deleteSinger(id: string): Observable<void> {
-    return this.http.delete<void>(this.singerUrl + id);
+  updateEmployee(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.API_SINGER}/${id}`, value);
   }
 
-  searchLineByName(singer: SingerInfo): Observable<SingerInfo[]> {
-    return this.http.post<SingerInfo[]>(this.singerUrl + 'search-by-name', singer);
+  deleteEmployee(id: number): Observable<any> {
+    return this.http.delete(`${this.API_SINGER}/${id}`, { responseType: 'text' });
+  }
+
+  getEmployeesList(): Observable<SingerInfo> {
+    console.log("name"+SingerInfo.name)
+    return this.http.get<SingerInfo>(`${this.API_SINGER}`);
   }
 }

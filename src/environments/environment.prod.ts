@@ -1,6 +1,7 @@
 export const environment = {
     production: true,
-    URL: 'https://ndc-music.herokuapp.com',
+    URL_local: 'http://localhost:8080/',
+    URL_server: 'https://backend-mp3.herokuapp.com/',
     firebaseConfig: {
         apiKey: 'AIzaSyAHbXIdiO5i-nOweX-szmiNn4JSyrOjDi4',
         authDomain: 'chinhbeo-18d3b.firebaseapp.com',

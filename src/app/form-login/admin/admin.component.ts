@@ -45,16 +45,16 @@ export class AdminComponent implements OnInit {
     //         }
     //     );
     // });
-    this.userService.getAdminBoard().subscribe(
-        data => {
-          this.board = data;
-          // console.log(this.board),
-          //     console.log(this.info)
-        },
-        error => {
-          this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-        }
-    );
+    // this.userService.getAdminBoard().subscribe(
+    //     data => {
+    //       this.board = data;
+    //       // console.log(this.board),
+    //       //     console.log(this.info)
+    //     },
+    //     error => {
+    //       this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
+    //     }
+    // );
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),

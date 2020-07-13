@@ -49,6 +49,7 @@ export class UserComponent implements OnInit {
       token: this.token.getToken(),
       username: this.token.getUsername(),
       avatar: this.token.getAvatar(),
+      password: this.token.getUserPassword(),
       roles: this.token.getAuthorities()
     };
     // console.log(this.info)
@@ -95,7 +96,7 @@ console.log("token"+this.token.getToken())
   editUser(user: UserAccount): void {
     window.sessionStorage.removeItem("AuthUserId");
     window.sessionStorage.setItem("AuthUserId", user.id.toString());
-    this.route.navigate(['/change-profile'+user.id]);
+    this.route.navigate(['/change-password'+user.id]);
   };
 
 }

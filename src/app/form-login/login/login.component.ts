@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     form: any = {};
     isLoggedIn = false;
     isLoginFailed = false;
-    errorMessage = '';
+    errorMessage = 'Login failled! Please Check username or Password';
     roles: string[] = [];
     userName: String;
     private loginInfo: AuthLoginInfo;
@@ -49,13 +49,14 @@ export class LoginComponent implements OnInit {
                 this.tokenStorage.saveToken(data.accessToken);
                 this.tokenStorage.saveUsername(data.username);
                 this.tokenStorage.saveAuthorities(data.roles);
-
+                this.tokenStorage.saveUserPassword(data.password)
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getAuthorities()
                 alert('Login success!!')
-                this.route.navigate(['/user'])
                 window.location.reload()
+                this.route.navigate(['/user'])
+
 
                 // this.route.navigate(['/user']);
                 // console.log("chinh1"+this.route + "url"+this.route.url)
@@ -70,6 +71,8 @@ export class LoginComponent implements OnInit {
             error => {
                 console.log(error);
                 this.errorMessage = error.error.message;
+                // this.isLoggedIn = true;
+                // this.isLoggedIn = false;
                 this.isLoginFailed = true;
                 alert('Login Failed!!! Please login again! ');
 

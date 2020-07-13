@@ -32,7 +32,7 @@ import {LoginComponent} from './form-login/login/login.component';
 import {UserComponent} from './form-login/user/user.component';
 import {environment} from "../environments/environment.prod";
 import { UploadAvatarComponent } from './content/upload/upload-avatar/upload-avatar.component';
-import { ChangeProfileComponent } from './form-login/change-profile/change-profile.component';
+import { ChangePasswordComponent } from './form-login/change-password/change-password.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {A11yModule} from "@angular/cdk/a11y";
 import {ClipboardModule} from "@angular/cdk/clipboard";
@@ -79,6 +79,9 @@ import { EditSingerComponent } from './content/singerManage/edit-singer/edit-sin
 import { httpInterceptorProviders} from "./auth/auth-interceptor";
 import {AuthGuard} from "./auth/auth.guard";
 import {AuthService} from "./auth/auth.service";
+import {ChangePassword} from "./auth/change-password";
+
+
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent, data: {title: 'Home'}},
@@ -86,7 +89,7 @@ export const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
     {path: 'user', component: UserComponent, data: {title: 'User'}},
-    {path: 'changepass', component: ChangeProfileComponent, data: {title: 'ChangePassword'}},
+    {path: 'changepass', component: ChangePasswordComponent, data: {title: 'ChangePassword'}},
     {path: 'uploadAvatar', component: UploadAvatarComponent, data: {title: 'UploadAvatar'}},
     {path: 'addAvatar',component: AddAvatarComponent, data: {title: 'AddAvatar'}},
     {path: 'admin',component: AdminComponent, data: {title: 'Admin'}},
@@ -98,7 +101,7 @@ export const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangeProfileComponent, AddAvatarComponent, UploadFileComponent, CreateSingerComponent, AdminComponent, DetailSingerComponent, SingerComponent, EditSingerComponent,
+        AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserComponent, UploadAvatarComponent, ChangePasswordComponent, AddAvatarComponent, UploadFileComponent, CreateSingerComponent, AdminComponent, DetailSingerComponent, SingerComponent, EditSingerComponent
     ],
     imports: [
         HttpClientModule,
@@ -113,7 +116,7 @@ export const appRoutes: Routes = [
     ],
     // entryComponents: [UserComponent],
     providers: [
-        httpInterceptorProviders //Doan code lay JWT cho Header gui request lien quan ChangePass//
+        httpInterceptorProviders, AuthGuard//Doan code lay JWT cho Header gui request lien quan ChangePass//
     ],
     bootstrap: [AppComponent],
     exports: [

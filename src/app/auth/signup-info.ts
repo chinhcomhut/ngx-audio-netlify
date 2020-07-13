@@ -12,6 +12,7 @@ export class SignUpInfo {
         this.email = email;
         // this.avatarUrl = avatarUrl;
         this.password = password;
+
         this.role = ['user'];
     }
 }

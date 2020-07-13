@@ -8,6 +8,7 @@ import { SignUpInfo } from './signup-info';
 import {environment} from "../../environments/environment";
 import {ChangePassword} from "./change-password";
 import {UserAccount} from "../model/userAccount/userAccount";
+import {FormGroup} from "@angular/forms";
 // import {UpdateInfo} from '../model/userManager/UpdateInfo';
 // import {ChangePassword} from '../model/userManager/ChangePassword';
 
@@ -25,17 +26,18 @@ export class AuthService {
   private getUserId = environment.URL_server+'user';
 
   // private loginUrl = environment.URL_local+'signin';
-  // private loginUrl = environment.URL_server+'signin';
-  private loginUrl = 'https://backend-mp3.herokuapp.com/api/auth/signin'
+  private loginUrl = environment.URL_server+'signin';
+  // private loginUrl = 'https://backend-mp3.herokuapp.com/api/auth/signin'
 
   // private signupUrl = environment.URL_local+'signup';
-  // private signupUrl = environment.URL_server+'signup';
-  private signupUrl = 'https://backend-mp3.herokuapp.com/api/auth/signup'
+  private signupUrl = environment.URL_server+'signup';
+  // private signupUrl = 'https://backend-mp3.herokuapp.com/api/auth/signup'
   private updateProfileUrl = environment.URL_local+'update-profile';
 
   // private changePassUrl = environment.URL_local+'change-password';
-  // private changePassUrl = environment.URL_server+'change-password';
-  private changePassUrl = 'https://backend-mp3.herokuapp.com/api/auth/change-password';
+  // private changePassUrl = 'http://localhost:8080/api/auth/change-pasword'
+  private changePassUrl = environment.URL_server+'change-password';
+  // private changePassUrl = 'https://backend-mp3.herokuapp.com/api/auth/change-password';
   constructor(private http: HttpClient) {
   }
 
@@ -67,10 +69,10 @@ export class AuthService {
   // }
   //
 
-  changePasswordAuth(info: ChangePassword): Observable<JwtResponse> {
-    console.log("info"+info)
-    console.log("Jwt"+JwtResponse)
-    return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
+  changePasswordAuth(info: any): Observable<JwtResponse> {
+console.log("info",info)
+
+    return this.http.put<JwtResponse>(this.changePassUrl,info, httpOptions);
   }
     changePassword(passForm: ChangePassword): Observable<string> {
     console.log("passForm"+passForm)

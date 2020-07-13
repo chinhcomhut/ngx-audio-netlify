@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import {SignUpInfo} from "../../auth/signup-info";
 import {Router} from '@angular/router';
-import {FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 // @ts-ignore
 // @ts-ignore
@@ -25,7 +25,9 @@ export class RegisterComponent implements OnInit {
     isSignUpFailed = false;
     errorMessage = '';
 
-    constructor(private authService: AuthService, private route: Router) {
+    constructor(private authService: AuthService, private route: Router,
+                ) {
+
     }
 
     ngOnInit() {
@@ -43,21 +45,22 @@ export class RegisterComponent implements OnInit {
             this.form.name,
             this.form.username,
             this.form.email,
-            this.form.password);
-            console.log("chinh"+this.signupInfo)
+            this.form.password)
+            console.log("chinh",this.signupInfo)
         this.authService.signUp(this.signupInfo).subscribe(
             data => {
-                console.log(data);
-                this.isSignedUp = true;
-                this.isSignUpFailed = false;
+                console.log("dang ky",data);
+
                 alert('Creat Account Success!!');
-                this.route.navigate(['/']);
+                this.route.navigate(['login']);
             },
             error => {
                 console.log(error);
                 this.errorMessage = error.error.message;
                 this.isSignUpFailed = true;
-                alert('Create Account Failed! The same name or Email! Please Create Account Again!');
+                console.log("dangkyloi",this.isSignUpFailed)
+                // this.route.navigate(['login']);
+
             }
         );
     }

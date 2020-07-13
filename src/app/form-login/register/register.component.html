@@ -65,21 +65,17 @@
     <div class="row">
         <div class="col-12" style="margin-top: 20px">
             <mat-card style="margin: 50px 0;">
-                <div *ngIf="isSignedUp; else signupForm">
+                <mat-card-title *ngIf="isSignedUp; else signupForm">
                     Your registration is successfull! Please login!
-                </div>
+                </mat-card-title>
                 <ng-template #signupForm>
-                    <form class="form-register" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <form class="form-register" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
                         <mat-form-field style="width: 350px" appearance="outline">
                             <mat-label>Enter your name ...</mat-label>
                             <input matInput placeholder="Enter your name..."
-                                   name="name" [(ngModel)]="form.name" #name="ngModel" required >
+                                   name="name" [(ngModel)]="form.name" #name = "ngModel" required >
                             <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
-                            <div *ngIf="f.submitted && name.invalid">
-                                <!--                                <div *ngIf="username.errors.required">Username is-->
-                                <!--                                    required-->
-                                <!--                                </div>-->
-                            </div>
+                          <mat-error *ngIf="f.submitted && name.invalid "></mat-error>
                         </mat-form-field>
                         <br>
                         <mat-form-field style="width: 350px" appearance="outline">
@@ -121,7 +117,7 @@
                             <mat-error *ngIf="password.hasError('required')">
                                 Password is <strong>required</strong>
                             </mat-error>
-                            <mat-error *ngIf="password.errors.minlength">
+                            <mat-error *ngIf="password.errors?.minlength">
                                 Password min is 6 character
                             </mat-error>
                         </mat-form-field>
@@ -134,9 +130,9 @@
                             <div class="mat-button-ripple mat-ripple" matripple=""></div>
                             <div class="mat-button-focus-overlay"></div>
                         </button><span class="example-spacer"></span>
-                        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-                                                                Signup failed!<br/>{{errorMessage}}
-                        </div>
+                        <mat-error style="color: red" *ngIf="f.submitted " class="alert alert-warning">
+                                                                Status Signup: <br/>{{errorMessage}}
+                        </mat-error>
 
                     </form>
                 </ng-template>

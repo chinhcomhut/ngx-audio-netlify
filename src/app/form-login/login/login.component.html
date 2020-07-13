@@ -103,6 +103,13 @@
 <!--                                    required-->
 <!--                                </div>-->
                             </div>
+                            <mat-error *ngIf="password.hasError('required')">
+                                Password is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="password.errors?.minlength">
+                                Password min is 6 character
+                            </mat-error>
+
                         </mat-form-field>
 
                         <br>
@@ -117,7 +124,7 @@
                         <div *ngIf="f.submitted && isLoginFailed"
                              class="alert alert-danger">
 
-                            Login failed: {{errorMessage}}
+                           Login Failled please Check username or password -> {{errorMessage}}
                         </div>
 
                     </form>
